@@ -1,0 +1,61 @@
+<div data-role="layout" data-id="app">
+   <header data-role="header">
+      <div data-role="navbar">Contact List
+   </header>
+   <footer data-role="footer">
+      <div data-role="tabstrip">
+         <a href="#info" data-icon="info">Name</a>
+         <a href="#schedule" data-icon="recents">Phone</a>
+      </div>
+   </footer>
+
+   <div data-role="view" data-init="getInfo" data-layout="app" data-title="info" id="info">
+      <div id="news"></div>
+   </div>
+   <div data-role="view" data-layout="app" data-init="getSessions" data-title="schedule" id="schedule">
+      <ul id="sessions"></ul>
+   </div>
+</div>
+<script type="text/x-kendo-template" id="sessionsTemplate">
+   <div class="left">
+      <div class='time'>${ formatted_time }
+      <div class='speaker'>${ speaker }
+
+   ${ title }
+   </div>
+</script>
+<script type="text/javascript">
+//var app = new kendo.mobile.Application($(document).body);
+$(document).ready(function(){
+   
+   var getInfo = function() {
+      // read from the remote data source      
+      $.get("/contacts.json", function(data) {
+         $.each(data, function() {
+            
+            $("#news").append("" + this.content + "");
+         });
+      });
+      new kendo.mobile.Application();
+   };
+   var getSessions = function() {
+      $("#sessions").kendoMobileListView({
+         dataSource: kendo.data.DataSource.create({
+            transport: {
+                read: "/contacts.json"
+            },
+            group: "day",
+            sort: { field: "time", dir: "asc" }
+         }),
+        template: $("#sessionsTemplate").html()
+      });
+      new kendo.mobile.Application();
+   };
+   var autoRefill = function() {
+      $('#').kendoAutoComplete(function(){ });
+   }
+
+   getInfo();
+   getSessions();
+});
+</script>
