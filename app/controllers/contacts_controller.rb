@@ -6,8 +6,8 @@ class ContactsController < ApplicationController
   def index
     @contacts = Contact.all
       respond_to do |format|
-       #format.json#{@contacts.to_json(:methods => [:formatted_time, :day])}
-        format.json { render :json => @contacts.to_json(:methods => [:formatted_time, :day]) }
+       format.html
+       format.json { render :json => @contacts.to_json(:methods => [:formatted_time, :day]) }
       end
   end
 
