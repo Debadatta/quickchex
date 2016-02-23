@@ -6,5 +6,5 @@ Rails.application.routes.draw do
     end
   end
 
-  root "contacts#index"
+  root "contacts#contact_list"
 end
