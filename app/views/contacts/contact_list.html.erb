@@ -1,9 +1,5 @@
 <h4>Contact List </h4>
-<div class="row">
-   <div  class="col-md-6">
-      <%= text_field 'search', '', :class=> 'form-control'%>
-   </div>
-</div>
+
 <div class="row">
    <div class="col-md-6" style="height:300px; overflow-y: hidden">
       <div id="contact_list">
@@ -11,15 +7,34 @@
       </div>
    </div>
 </div>
+<div style="margin-top: 2px;">
+   <div>
+   <%= button_tag '1', :class=> 'btn btn-success input-btn' %>
+   <%= button_tag '2', :class=> 'btn btn-success input-btn' %>
+   <%= button_tag '3', :class=> 'btn btn-success input-btn' %>
+   <%= button_tag '4', :class=> 'btn btn-success input-btn' %>
+   <%= button_tag '5', :class=> 'btn btn-success input-btn' %>
+</div>
+<div style="margin-top: 2px;">
+   <%= button_tag '6', :class=> 'btn btn-success input-btn' %>
+   <%= button_tag '7', :class=> 'btn btn-success input-btn' %>
+   <%= button_tag '8', :class=> 'btn btn-success input-btn' %>
+   <%= button_tag '9', :class=> 'btn btn-success input-btn' %>
+   <%= button_tag '0', :class=> 'btn btn-success input-btn' %>
+   
+</div>
+<div style="margin-top: 2px;"><%= link_to 'Clear', 'javascript:void(0);', :class=> 'btn  btn-success clear ' %></div>
+</div>
 
 <script type="text/javascript">
 $(document).ready(function(){
-
+   var string1 = "" ;
    var search_fun = function(){
-      $('#search_').focus();
-      $('#search_').keyup(function(){
-         
-         $.post('/contacts/search.js', {value: $(this).val()}, function(res){
+      
+      $('.input-btn').click(function(){         
+         var btn_number = $(this).text();         
+         string1 = string1 + btn_number;
+         $.post('/contacts/search.js', {value: string1}, function(res){
 
          });
 
@@ -28,8 +43,11 @@ $(document).ready(function(){
 
 
    var keyboard_fun = function() {
-      $('input').bind('focus',function() {
-        alert($(this).val());
+      $('.clear').click(function() {
+        string1 = ""        ;
+        $.post('/contacts/search.js', {value: ''}, function(res){
+
+         });
       });
    };
 

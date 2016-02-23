@@ -3,6 +3,7 @@
 	<div class="col-md-6 col-xs-12 col-sm-6">
 		<div class="col-md-4 col-sm-4 col-xs-4"><%= contact.name %></div>
 		<div class="col-md-4 col-sm-4 col-xs-4"><%= contact.phone %></div>
+		<div class="col-md-1 col-sm-1 col-xs-1"><%=link_to '>', contact_path(contact) %></div>
 	</div>
 </div>
 <% end unless @contacts.blank?%>
