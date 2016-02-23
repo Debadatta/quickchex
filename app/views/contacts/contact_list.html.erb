@@ -1,8 +1,10 @@
 <h4>Contact List </h4>
-<%= text_field 'search', ''%>
-<div>
-   <div id="contact_list">
-     <%=render partial: 'contacts' %>
+<%= text_field 'search', '', :class=> 'form-control'%>
+<div class="row">
+   <div class="col-md-6" style="height:200px; overflow-y: auto">
+      <div id="contact_list">
+        <%=render partial: 'contacts' %>
+      </div>
    </div>
 </div>
 
@@ -10,7 +12,7 @@
 $(document).ready(function(){
 
    var search_fun = function(){
-
+      $('#search_').focus();
       $('#search_').keyup(function(){
          
          $.post('/contacts/search.js', {value: $(this).val()}, function(res){
@@ -20,7 +22,16 @@ $(document).ready(function(){
       });
    };
 
+
+   var keyboard_fun = function() {
+      $('input').bind('focus',function() {
+        alert($(this).val());
+      });
+   };
+
+
    search_fun();
+   keyboard_fun();
 });
 
 
