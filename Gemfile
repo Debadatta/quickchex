@@ -28,8 +28,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'font-awesome-sass', '~> 4.2.0'
 # Use Capistrano for deployment
-gem 'capistrano-rails', group: :development
-gem 'rails_12factor', group: :production
+gem 'capistrano-rails'
+gem 'rails_12factor'
 
 gem 'devise', '~> 3.4.1'
 gem 'will_paginate', '~> 3.0.7'
