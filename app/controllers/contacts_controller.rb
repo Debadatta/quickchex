@@ -8,6 +8,17 @@ class ContactsController < ApplicationController
       respond_to do |format|
        format.html
        format.json { render :json => @contacts.to_json(:methods => [:formatted_time, :day]) }
+       format.js { render :contacts => @contacts.pluck(:name).to_json}
+      end
+  end
+
+  def search
+    value = params[:value]
+        
+    @contacts = Contact.where("LOWER(name) like '%#{value.to_s.downcase}%' OR phone like '%#{value}%'")
+respond_to do |format|
+       
+       format.js
       end
   end
 
@@ -44,8 +55,7 @@ class ContactsController < ApplicationController
     respond_with(@contacts)
   end
 
-  def search
-  end
+  
 
   private
     def set_contact

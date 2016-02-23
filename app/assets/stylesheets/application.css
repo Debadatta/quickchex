@@ -12,6 +12,5 @@
  *
  *= require_tree .
  *= require_self
- *= require kendo/kendo.common.min
- *= require kendo/kendo.default.min
+ *= require bootstrap_and_overrides
  */

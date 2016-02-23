@@ -4,4 +4,7 @@
 # Examples:
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+#   Mayor.create(name: 'Emanuel', city: cities.first)1.upto\
+1.upto(200) do |i|
+	Contact.create({name: Faker::Name.name, phone: Faker::PhoneNumber.phone_number })
+	end

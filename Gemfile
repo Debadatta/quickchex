@@ -31,10 +31,12 @@ gem 'font-awesome-sass', '~> 4.2.0'
 gem 'capistrano-rails'
 gem 'rails_12factor'
 
-gem 'devise', '~> 3.4.1'
+gem 'faker'
 gem 'will_paginate', '~> 3.0.7'
 gem 'will_paginate-bootstrap', '~> 1.0.1'
-gem 'kendoui-rails'
+#gem 'kendoui-rails'
+gem 'responders'
+gem "twitter-bootstrap-rails"
 
 group :development do
 	# Annotate models
